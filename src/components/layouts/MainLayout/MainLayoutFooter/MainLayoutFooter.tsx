@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { NAV_ITEMS } from "../mainLayout.constants";
 
 const MainLayoutFooter = () => {
   return (
@@ -20,16 +21,18 @@ const MainLayoutFooter = () => {
           </div>
         </div>
 
-        <div className="text-center">
+        <div className="lg:text-left text-center">
           <h3 className="mb-2 font-semibold text-lg">Menu</h3>
-          <ul className="flex lg:flex-col justify-between gap-5 lg:gap-0 space-y-1 w-full text-gray-300 text-sm">
-            <li>Home</li>
-            <li>Anime</li>
-            <li>Characters</li>
-          </ul>
+          <div className="flex lg:flex-col justify-between gap-5 lg:gap-0 space-y-1 w-full text-gray-300 text-sm">
+            {NAV_ITEMS.map((nav) => (
+              <Link href={nav.href} key={`footer-nav-${nav.href}`}>
+                {nav.name}
+              </Link>
+            ))}
+          </div>
         </div>
 
-        <div className="text-center">
+        <div className="lg:text-left text-center">
           <h3 className="mb-2 font-semibold text-lg">Made With</h3>
           <ul className="flex lg:flex-col gap-5 lg:gap-0 space-y-1 text-gray-300 text-sm">
             <li>Next.js</li>
@@ -38,7 +41,7 @@ const MainLayoutFooter = () => {
           </ul>
         </div>
 
-        <div className="text-center">
+        <div className="lg:text-left text-center">
           <h3 className="mb-2 font-semibold text-lg">API</h3>
           <Link href="https://jikan.moe">
             <Image

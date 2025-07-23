@@ -12,19 +12,20 @@ const AnimeList = (props: Proptypes) => {
 
   return (
     <>
-      <div className="mt-8 px-5">
+      <div className="mt-8 px-6">
         <h2 className="font-semibold text-gray-900 text-xl">{title}</h2>
 
-        <div className="gap-2 grid xl:grid-cols-10 grid-flow-col auto-cols-max mt-2 overflow-x-auto">
+        <div className="gap-2 grid xl:grid-cols-8 grid-flow-col auto-cols-max mt-2 overflow-x-auto hide-scrollbar">
           {!isLoading
             ? data?.map((anime) => (
                 <AnimeCard
                   key={`anime-${anime.mal_id}`}
                   anime={anime}
+                  fullWidth
                   isLoading={isLoading}
                 />
               ))
-            : Array.from({ length: 10 }).map((_, index) => (
+            : Array.from({ length: 8 }).map((_, index) => (
                 <AnimeCard
                   key={`skeleton-anime-${index}`}
                   anime={{} as IAnime}

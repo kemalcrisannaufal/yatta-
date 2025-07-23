@@ -9,6 +9,7 @@ const PageHead = (props: Proptypes) => {
   return (
     <Head>
       <title>{title}</title>
+      <link rel="icon" href="/images/general/logo.svg" />
     </Head>
   );
 };

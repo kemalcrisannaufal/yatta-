@@ -3,7 +3,7 @@ import Home from "@/components/views/Home";
 
 const HomePage = () => {
   return (
-    <MainLayout title="AnimeIn">
+    <MainLayout title="Yatta!" withoutNavbar>
       <Home />
     </MainLayout>
   );

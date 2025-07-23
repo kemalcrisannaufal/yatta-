@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 const useHome = () => {
   const getSeasonNowAnime = async (): Promise<IAnime[]> => {
     const { data } = await animeServices.getSeasonNowAnime();
-    return data.data.slice(0, 10);
+    return data.data.slice(0, 8);
   };
 
   const { data: seasonNowAnimeData, isLoading: isLoadingSeasonNowAnimeData } =
@@ -17,7 +17,7 @@ const useHome = () => {
 
   const getPopularAnime = async (): Promise<IAnime[]> => {
     const { data } = await animeServices.getPopularAnime();
-    return data.data.slice(0, 10);
+    return data.data.slice(0, 8);
   };
 
   const { data: popularAnimeData, isLoading: isLoadingPopularAnimeData } =
@@ -29,7 +29,7 @@ const useHome = () => {
 
   const getTopCharactersData = async (): Promise<ICharacter[]> => {
     const { data } = await animeServices.getTopCharacters();
-    return data.data.slice(0, 10);
+    return data.data.slice(0, 8);
   };
 
   const { data: topCharactersData, isLoading: isLoadingTopCharactersData } =

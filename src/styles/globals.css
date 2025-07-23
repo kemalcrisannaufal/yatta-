@@ -3,13 +3,36 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --color-primary: #1e2a5a;
+  --color-secondary: #6c7aa1;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+}
+
+@layer utilities {
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  .bg-secondary {
+    background-color: var(--color-secondary);
+  }
+  .text-primary {
+    color: var(--color-primary);
+  }
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

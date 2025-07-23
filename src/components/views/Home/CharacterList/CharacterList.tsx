@@ -15,16 +15,17 @@ const CharacterList = (props: Proptypes) => {
       <div className="mt-8 px-5">
         <h2 className="font-semibold text-gray-900 text-xl">{title}</h2>
 
-        <div className="gap-2 grid xl:grid-cols-10 grid-flow-col auto-cols-max mt-2 overflow-x-auto">
+        <div className="gap-2 grid xl:grid-cols-8 grid-flow-col auto-cols-max mt-2 overflow-x-auto hide-scrollbar">
           {!isLoading
             ? characters?.map((character) => (
                 <CharacterCard
                   key={`character-${character.mal_id}`}
                   character={character}
+                  fullWidth
                   isLoading={isLoading}
                 />
               ))
-            : Array.from({ length: 10 }).map((_, index) => (
+            : Array.from({ length: 8 }).map((_, index) => (
                 <CharacterCard
                   key={`skeleton-character-${index}`}
                   character={{} as ICharacter}
