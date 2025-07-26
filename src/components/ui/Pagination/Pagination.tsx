@@ -41,11 +41,11 @@ const Pagination = (props: Proptypes) => {
   };
 
   return (
-    <div className="flex items-center gap-1 text-white">
+    <div className="flex items-center gap-1">
       <button
         disabled={currentPage === 1}
         onClick={() => goToPage(currentPage - 1)}
-        className="bg-secondary disabled:opacity-50 px-3 py-1 rounded w-10 h-10 cursor-pointer"
+        className="disabled:opacity-50 px-3 py-1 rounded w-10 h-10 cursor-pointer"
       >
         <FaChevronLeft />
       </button>
@@ -55,8 +55,8 @@ const Pagination = (props: Proptypes) => {
           key={index}
           onClick={() => typeof page === "number" && goToPage(page)}
           className={cn(
-            "flex justify-center items-center bg-secondary px-3 py-1 rounded min-w-10 h-10 cursor-pointer",
-            currentPage === page && "bg-primary  font-semibold"
+            "flex justify-center items-center px-3 py-1 rounded min-w-10 h-10 cursor-pointer",
+            currentPage === page && "bg-neon text-black  font-semibold"
           )}
         >
           {page}
@@ -66,7 +66,7 @@ const Pagination = (props: Proptypes) => {
       <button
         disabled={currentPage === totalPage}
         onClick={() => goToPage(currentPage + 1)}
-        className="bg-secondary disabled:opacity-50 px-3 py-1 rounded w-10 h-10 cursor-pointer"
+        className="disabled:opacity-50 px-3 py-1 rounded w-10 h-10 cursor-pointer"
       >
         <FaChevronRight />
       </button>

@@ -8,6 +8,7 @@ import {
   SORT_DEFAULT,
   TYPE_DEFAULT,
 } from "@/constants/list.constants";
+
 import useDebounce from "@/hooks/useDebounce";
 import animeServices from "@/services/anime.services";
 import { IAnime } from "@/types/anime";
@@ -19,7 +20,6 @@ const standardizeFilter = (selected: string) => {
   if (selected === "all") {
     return "";
   }
-
   return selected;
 };
 
@@ -167,7 +167,6 @@ const useAnime = () => {
     currentSort,
     currentSFW,
 
-    setUrl,
     handleChangeLimit,
     handleChangePage,
     handleChangeSearch,
@@ -175,6 +174,7 @@ const useAnime = () => {
     handleChangeOrderBy,
     handleChangeSort,
     handleChangeSFW,
+    setUrl,
 
     data,
     isLoading,

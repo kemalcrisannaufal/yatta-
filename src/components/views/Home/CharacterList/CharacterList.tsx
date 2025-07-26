@@ -13,7 +13,7 @@ const CharacterList = (props: Proptypes) => {
   return (
     <>
       <div className="mt-8 px-5">
-        <h2 className="font-semibold text-gray-900 text-xl">{title}</h2>
+        <h2 className="font-semibold text-xl">{title}</h2>
 
         <div className="gap-2 grid xl:grid-cols-8 grid-flow-col auto-cols-max mt-2 overflow-x-auto hide-scrollbar">
           {!isLoading

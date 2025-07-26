@@ -7,20 +7,24 @@ import { useEffect, useState } from "react";
 import HamburgerMenu from "@/components/ui/HamburgerMenu";
 import { FaChevronRight } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
+import useDebounce from "@/hooks/useDebounce";
 
 const MainLayoutNavbar = () => {
   const router = useRouter();
+  const debounce = useDebounce();
   const [scrolled, setScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      setScrolled(window.scrollY > 20);
+      debounce(() => {
+        setScrolled(window.scrollY > 75);
+      }, 5000);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [debounce]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -34,13 +38,20 @@ const MainLayoutNavbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const isActive = (href: string) => {
+    return (
+      (router.pathname.startsWith(href) && href !== "/") ||
+      router.pathname === href
+    );
+  };
+
   return (
     <nav
       className={cn(
-        "z-50 relative bg-[#1e2a5a] px-5 py-2 h-18 text-white",
+        "z-50 relative bg-primary px-5 py-2 h-18 overflow-visible text-white",
         scrolled &&
-          "sticky top-4 mx-2 rounded-full transition-all duration-300 px-8 h-16",
-        isDropdownOpen && "rounded-b-none"
+          "sticky top-4 mx-2  bg-black/50 rounded-full backdrop-blur-2xl transition-all duration-300 px-8 h-16 ",
+        isDropdownOpen && "rounded-b-none bg-primary"
       )}
     >
       <div className="flex justify-between items-center px-2 w-full h-full">
@@ -67,7 +78,7 @@ const MainLayoutNavbar = () => {
               key={`nav-${nav.name}`}
               className={cn(
                 "p-2 text-gray-300",
-                router.pathname === nav.href && "font-semibold text-white"
+                isActive(nav.href) && "font-semibold text-neon"
               )}
             >
               {nav.name}
@@ -84,23 +95,25 @@ const MainLayoutNavbar = () => {
               transition={{ duration: 0.3, ease: "easeInOut" }}
               style={{ originY: 0 }}
               className={cn(
-                "md:hidden top-[95%] left-0 z-40 absolute flex flex-col bg-[#1e2a5a] px-3 pt-3 pb-5 w-full",
-                scrolled && "rounded-b-xl"
+                "md:hidden top-full left-0 z-40 absolute bg-black/50 backdrop-blur-2xl w-full",
+                scrolled && "rounded-b-xl bg-primary"
               )}
             >
-              {NAV_ITEMS.map((nav) => (
-                <Link
-                  href={nav.href}
-                  key={`nav-${nav.name}`}
-                  className={cn(
-                    "flex justify-between items-center px-7 py-3 text-gray-300 text-lg",
-                    router.pathname === nav.href && "font-semibold text-white"
-                  )}
-                >
-                  {nav.name}
-                  <FaChevronRight className="text-2xl" />
-                </Link>
-              ))}
+              <div className="px-3 pt-3 pb-5">
+                {NAV_ITEMS.map((nav) => (
+                  <Link
+                    href={nav.href}
+                    key={`nav-${nav.name}`}
+                    className={cn(
+                      "flex justify-between items-center px-7 py-3 text-gray-300 text-lg",
+                      isActive(nav.href) && "font-semibold text-neon"
+                    )}
+                  >
+                    {nav.name}
+                    <FaChevronRight className="text-2xl" />
+                  </Link>
+                ))}
+              </div>
             </motion.div>
           )}
         </AnimatePresence>

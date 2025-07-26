@@ -17,10 +17,10 @@ const Anime = () => {
     currentLimit,
     currentPage,
 
-    setUrl,
     handleChangeLimit,
     handleChangePage,
     handleChangeSearch,
+    setUrl,
 
     data,
     isLoading,
@@ -36,20 +36,20 @@ const Anime = () => {
     <div className="flex xl:flex-row flex-col gap-5 px-4 py-5">
       <AnimeFilter count={Number(data?.pagination?.items?.total)} />
 
-      <div className="xl:w-3/4">
+      <div className="w-full xl:w-3/4">
         <div className="flex justify-between items-center">
-          <p className="hidden xl:block font-medium text-gray-700">
+          <p className="hidden xl:block font-medium">
             {data?.pagination?.items?.total} Results
           </p>
-          <div className="flex items-center gap-2 shadow-md px-3 border border-gray-300 rounded-xl w-full xl:w-1/2">
+          <div className="flex items-center gap-2 bg-secondary shadow-md px-3 border rounded-xl w-full xl:w-1/2">
             <input
               aria-label="search input"
               type="text"
-              className="bg-white px-2 py-2 focus:outline-none w-full"
+              className="bg-secondary px-2 py-2 focus:outline-none w-full"
               placeholder="Search"
               onChange={handleChangeSearch}
             />
-            <CiSearch className="text-xl" />
+            <CiSearch className="text-2xl" />
           </div>
         </div>
 

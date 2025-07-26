@@ -16,21 +16,20 @@ const AnimeCard = (props: Proptypes) => {
       {!isLoading ? (
         <Link
           href={`/anime/${anime?.mal_id}`}
-          key={`anime-${anime?.mal_id}`}
           className={cn(
-            "relative rounded w-[175px] h-[235px] overflow-hidden",
+            "relative rounded w-[165px] md:w-[175px] h-[235px] overflow-hidden",
             fullWidth && "w-full"
           )}
         >
           <Image
             src={anime?.images?.jpg?.image_url}
             alt={`image ${anime?.title}`}
-            width={150}
-            height={200}
+            width={500}
+            height={500}
             className="w-full h-full object-cover"
           />
 
-          <div className="bottom-0 left-0 absolute flex flex-col justify-center items-start bg-black/30 backdrop-blur-xs p-2 w-full h-[65px]">
+          <div className="bottom-0 left-0 absolute flex flex-col justify-center items-start bg-gradient-to-b from-transparent to-[var(--color-primary)] backdrop-blur-[1px] p-2 w-full h-[65px]">
             <span className="font-medium text-white line-clamp-2">
               {anime?.title}
             </span>
@@ -39,7 +38,7 @@ const AnimeCard = (props: Proptypes) => {
       ) : (
         <div
           aria-label="skeleton-anime-card"
-          className="bg-slate-300 rounded w-full h-[230px]"
+          className={cn("rounded w-[165px] md:w-[175px] h-[235px] skeleton")}
         />
       )}
     </>

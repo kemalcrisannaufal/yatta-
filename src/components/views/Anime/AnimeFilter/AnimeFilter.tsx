@@ -43,9 +43,9 @@ const AnimeFilter = (props: Proptypes) => {
     <>
       {!isXL && (
         <div className="flex justify-between items-center">
-          <p className="font-medium text-gray-700">{count || 0} Results</p>
+          <p className="font-medium">{count || 0} Results</p>
           <button
-            className="flex items-center gap-2 shadow px-4 py-1.5 border border-gray-300 rounded-full font-medium"
+            className="flex items-center gap-2 shadow px-4 py-1.5 border rounded-full font-medium"
             onClick={() => setIsFilterOpen(!isFilterOpen)}
           >
             Filter
@@ -63,17 +63,16 @@ const AnimeFilter = (props: Proptypes) => {
             transition={{ duration: 0.3 }}
             style={{ transformOrigin: "top" }}
             className={cn(
-              "xl:top-24 xl:sticky flex flex-col gap-2 shadow-lg p-5 border border-gray-300 rounded-lg xl:w-1/4 h-max"
+              "xl:top-24 xl:sticky flex flex-col gap-2 shadow-lg p-5 border border-neutral-700 rounded-lg xl:w-1/4 h-max"
             )}
           >
-            <h2 className="font-semibold text-primary text-xl">Filter</h2>
+            <h2 className="font-semibold text-xl">Filter</h2>
             <Select
               defaultValue={`${currentType}`}
               label="Type"
               name="type"
               onChange={handleChangeType}
               options={TYPE}
-              variant="white"
               fullWidth
             />
 
@@ -83,7 +82,6 @@ const AnimeFilter = (props: Proptypes) => {
               name="order_by"
               onChange={handleChangeOrderBy}
               options={ORDER_BY}
-              variant="white"
               fullWidth
             />
 
@@ -93,7 +91,6 @@ const AnimeFilter = (props: Proptypes) => {
               name="sort"
               onChange={handleChangeSort}
               options={SORT}
-              variant="white"
               fullWidth
             />
 
@@ -103,7 +100,6 @@ const AnimeFilter = (props: Proptypes) => {
               name="sfw"
               onChange={handleChangeSFW}
               options={SFW}
-              variant="white"
               fullWidth
             />
           </motion.div>

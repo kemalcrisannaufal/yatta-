@@ -1,3 +1,4 @@
+import { ICharacter } from "@/types/anime";
 interface IImage {
   image_url: string;
   small_image_url?: string;
@@ -24,6 +25,7 @@ interface IAnime {
   episodes: number;
   status: string;
   airing: boolean;
+  synopsis: string;
   duration: string;
   rating: string;
   score: number;
@@ -32,6 +34,25 @@ interface IAnime {
   background: string;
   season: string;
   year: number;
+  type: string;
+  genres: { mal_id: string; type: string; name: string }[];
+  aired: {
+    from: string;
+    to: string | null;
+    prop: {
+      from: {
+        day: number;
+        month: number;
+        year: number;
+      };
+      to: {
+        day: null | number;
+        month: null | number;
+        year: null | number;
+      };
+    };
+    string: string;
+  };
 }
 
 interface ICharacter {
@@ -44,4 +65,16 @@ interface ICharacter {
   about: string;
 }
 
-export { IAnime, ICharacter };
+interface IEpisode {
+  mal_id: string;
+  title: string;
+  title_japanese: string;
+  title_romanji: string;
+  aired: string;
+  score: number;
+  filler: boolean;
+  recap: boolean;
+  synopsis: string;
+}
+
+export { IAnime, ICharacter, IEpisode };

@@ -18,19 +18,19 @@ const CharacterCard = (props: Proptypes) => {
           href={`/characters/${character?.mal_id}`}
           key={`character-${character?.mal_id}`}
           className={cn(
-            "relative rounded w-[175px] h-[235px] overflow-hidden",
+            "relative rounded w-[165px] md:w-[175px] h-[235px] overflow-hidden",
             fullWidth && "w-full"
           )}
         >
           <Image
             src={character?.images?.jpg?.image_url}
             alt={`${character?.name}`}
-            width={150}
-            height={200}
+            width={500}
+            height={500}
             className="w-full h-full object-cover"
           />
 
-          <div className="bottom-0 left-0 absolute bg-black/30 backdrop-blur-xs p-2 w-full h-[45px]">
+          <div className="bottom-0 left-0 z-30 absolute flex flex-col justify-center items-start bg-gradient-to-b from-transparent to-[var(--color-primary)] backdrop-blur-[1px] p-2 w-full h-[65px]">
             <span className="font-medium text-white line-clamp-1">
               {character?.name}
             </span>
@@ -39,7 +39,7 @@ const CharacterCard = (props: Proptypes) => {
       ) : (
         <div
           aria-label="skeleton-character-card"
-          className="bg-slate-300 rounded w-full h-[230px]"
+          className="rounded w-[165px] md:w-[175px] h-[230px] skeleton"
         />
       )}
     </>

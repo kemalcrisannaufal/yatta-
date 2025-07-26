@@ -4,9 +4,9 @@ import { NAV_ITEMS } from "../mainLayout.constants";
 
 const MainLayoutFooter = () => {
   return (
-    <footer className="bg-[#1e2a5a] mt-8 p-10 text-white">
-      <div className="flex lg:flex-row flex-col justify-between items-center lg:items-start gap-8">
-        <div className="flex items-center gap-5 max-w-[300px]">
+    <footer className="bg-primary mt-8 p-10 text-white">
+      <div className="flex md:flex-row flex-col justify-between items-center md:items-start gap-8 w-full">
+        <div className="md:hidden flex lg:flex items-center gap-5 max-w-[300px]">
           <Image
             src={"/images/general/logo.svg"}
             alt="logo"
@@ -21,9 +21,9 @@ const MainLayoutFooter = () => {
           </div>
         </div>
 
-        <div className="lg:text-left text-center">
+        <div className="flex flex-col justify-center items-center md:items-start">
           <h3 className="mb-2 font-semibold text-lg">Menu</h3>
-          <div className="flex lg:flex-col justify-between gap-5 lg:gap-0 space-y-1 w-full text-gray-300 text-sm">
+          <div className="flex md:flex-col justify-between gap-5 md:gap-0 space-y-1 w-full text-gray-300 text-sm">
             {NAV_ITEMS.map((nav) => (
               <Link href={nav.href} key={`footer-nav-${nav.href}`}>
                 {nav.name}
@@ -32,16 +32,16 @@ const MainLayoutFooter = () => {
           </div>
         </div>
 
-        <div className="lg:text-left text-center">
+        <div className="flex flex-col justify-center items-center md:items-start">
           <h3 className="mb-2 font-semibold text-lg">Made With</h3>
-          <ul className="flex lg:flex-col gap-5 lg:gap-0 space-y-1 text-gray-300 text-sm">
+          <ul className="flex md:flex-col justify-between gap-5 md:gap-0 space-y-1 w-full text-gray-300 text-sm">
             <li>Next.js</li>
             <li>Tailwind CSS</li>
             <li>Framer Motion</li>
           </ul>
         </div>
 
-        <div className="lg:text-left text-center">
+        <div className="flex flex-col justify-center items-center md:items-start">
           <h3 className="mb-2 font-semibold text-lg">API</h3>
           <Link href="https://jikan.moe">
             <Image
@@ -53,7 +53,7 @@ const MainLayoutFooter = () => {
           </Link>
         </div>
 
-        <div className="flex flex-col items-center mt-5 lg:mt-0">
+        <div className="flex flex-col justify-center items-center mt-5">
           <h2 className="font-bold text-4xl">Yatta!</h2>
           <p className="mt-2 text-gray-300 text-sm">
             © {new Date().getFullYear()} Yatta! All rights reserved.

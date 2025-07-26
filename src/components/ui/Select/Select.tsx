@@ -35,9 +35,9 @@ const Select = (props: Proptypes) => {
       </label>
       <div
         className={cn(
-          "flex items-center gap-2 bg-primary shadow px-3 py-2 border border-gray-400 rounded w-max text-white",
+          "flex items-center gap-2 bg- bg-primary bg-secondary shadow px-3 py-2 border border-neutral-600 rounded w-max text-white",
           fullWidth && "w-full",
-          variant === "white" && "bg-white text-black shadow"
+          variant === "white" && "bg-white text-black shadow border-black"
         )}
       >
         {startContent}
@@ -52,7 +52,10 @@ const Select = (props: Proptypes) => {
             <option
               key={`option-limit-${item.key}`}
               value={item.key}
-              className="w-max text-black"
+              className={cn(
+                "bg-secondary w-max text-white",
+                variant === "white" && "bg-white text-black"
+              )}
             >
               {item.value}
             </option>

@@ -112,6 +112,9 @@ const SFW_DEFAULT = SFW[0].key;
 
 const DELAY = 750;
 
+const CHARACTER_ROLES = ["All", "Main", "Supporting"];
+const CHARACTER_ROLE_DEFAULT = "Main";
+
 export {
   LIMIT,
   LIMIT_DEFAULT,
@@ -126,4 +129,6 @@ export {
   SFW,
   SFW_DEFAULT,
   DELAY,
+  CHARACTER_ROLES,
+  CHARACTER_ROLE_DEFAULT,
 };
