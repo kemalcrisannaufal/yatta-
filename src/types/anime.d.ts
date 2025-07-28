@@ -63,6 +63,10 @@ interface ICharacter {
   nicknames: string[];
   favorites: number;
   about: string;
+  anime?: {
+    role: string;
+    anime: IAnime;
+  }[];
 }
 
 interface IEpisode {
