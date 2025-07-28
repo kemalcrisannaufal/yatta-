@@ -13,7 +13,7 @@ const Home = () => {
     isLoadingTopCharactersData,
   } = useHome();
   return (
-    <>
+    <div className="w-full">
       <Hero />
       <AnimeList
         data={seasonNowAnimeData}
@@ -30,7 +30,7 @@ const Home = () => {
         isLoading={isLoadingTopCharactersData}
         title="Top Characters"
       />
-    </>
+    </div>
   );
 };
 

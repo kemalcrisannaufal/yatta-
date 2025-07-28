@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import AnimeCard from "@/components/ui/AnimeCard";
 import useAnime from "./useAnime";
 import { useRouter } from "next/router";
@@ -30,62 +29,72 @@ const Anime = () => {
     if (router.isReady) {
       setUrl();
     }
-  }, []);
+  }, [router.isReady]);
 
   return (
-    <div className="flex xl:flex-row flex-col gap-5 px-4 py-5">
-      <AnimeFilter count={Number(data?.pagination?.items?.total)} />
+    <div className="px-4 py-5">
+      <div className="flex xl:flex-row flex-col gap-5">
+        <AnimeFilter count={Number(data?.pagination?.items?.total)} />
 
-      <div className="w-full xl:w-3/4">
-        <div className="flex justify-between items-center">
-          <p className="hidden xl:block font-medium">
-            {data?.pagination?.items?.total} Results
-          </p>
-          <div className="flex items-center gap-2 bg-secondary shadow-md px-3 border rounded-xl w-full xl:w-1/2">
-            <input
-              aria-label="search input"
-              type="text"
-              className="bg-secondary px-2 py-2 focus:outline-none w-full"
-              placeholder="Search"
-              onChange={handleChangeSearch}
-            />
-            <CiSearch className="text-2xl" />
+        <div className="w-full xl:w-3/4">
+          <div className="flex md:flex-row flex-col xl:flex-col md:justify-between md:items-center xl:items-start w-full">
+            <h1 className="mb-3 font-bold text-2xl md:text-3xl">Anime</h1>
+
+            <div className="flex justify-between items-center md:w-1/2 xl:w-full">
+              <p className="hidden xl:block font-medium">
+                {data?.pagination?.items?.total} Results
+              </p>
+              <div className="flex items-center gap-2 bg-secondary shadow-md px-3 border rounded-xl w-full xl:w-1/2">
+                <input
+                  aria-label="search input"
+                  type="text"
+                  className="bg-secondary px-2 py-2 focus:outline-none w-full"
+                  placeholder="Search"
+                  onChange={handleChangeSearch}
+                />
+                <CiSearch className="text-2xl" />
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div className="gap-2 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-5">
-          {!isLoading
-            ? data?.data?.map((anime) => (
-                <AnimeCard
-                  key={`anime-${anime.mal_id}`}
-                  anime={anime}
-                  fullWidth
-                  isLoading={isLoading}
-                />
-              ))
-            : Array.from({ length: 24 }).map((_, index) => (
-                <AnimeCard
-                  key={`anime-skeleton${index}`}
-                  anime={{} as IAnime}
-                  isLoading
-                />
-              ))}
-        </div>
+          <div className="gap-2 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 mt-5">
+            {!isLoading
+              ? data?.data?.map((anime) => (
+                  <AnimeCard
+                    key={`anime-${anime.mal_id}`}
+                    anime={anime}
+                    isLoading={isLoading}
+                  />
+                ))
+              : Array.from({ length: 24 }).map((_, index) => (
+                  <AnimeCard
+                    key={`anime-skeleton${index}`}
+                    anime={{} as IAnime}
+                    isLoading
+                  />
+                ))}
+          </div>
 
-        <div className="flex md:flex-row flex-col justify-between items-center gap-5 mt-5">
-          <Select
-            defaultValue={`${currentLimit}`}
-            name="limit"
-            onChange={handleChangeLimit}
-            options={LIMIT}
-            startContent={<p>Limit:</p>}
-          />
+          <div className="flex md:flex-row flex-col justify-between items-center gap-5 mt-5">
+            <Select
+              defaultValue={`${currentLimit}`}
+              name="limit"
+              onChange={handleChangeLimit}
+              options={LIMIT}
+              startContent={<p>Limit:</p>}
+            />
 
-          <Pagination
-            initialPage={Number(currentPage) | 1}
-            totalPage={Number(data?.pagination?.items?.total) | 100}
-            onPageChange={handleChangePage}
-          />
+            <Pagination
+              initialPage={Number(currentPage) | 1}
+              totalPage={
+                Math.ceil(
+                  Number(data?.pagination?.items?.total) /
+                    Number(data?.pagination?.items?.per_page)
+                ) | 0
+              }
+              onPageChange={handleChangePage}
+            />
+          </div>
         </div>
       </div>
     </div>

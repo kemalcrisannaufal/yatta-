@@ -30,7 +30,7 @@ const AnimeDetailCharacters = () => {
       </div>
 
       <div>
-        <div className="gap-2 grid xl:grid-cols-8 xl:grid-flow-row grid-flow-col auto-cols-max mt-3 overflow-x-auto xl:overflow-x-hidden hide-scrollbar">
+        <div className="gap-2 grid xl:grid-cols-8 xl:grid-flow-row grid-flow-col auto-cols-[165px] mt-3 overflow-x-auto xl:overflow-x-hidden hide-scrollbar">
           {!isLoadingCharacters
             ? selectedCharacters?.map((character) => (
                 <motion.div
@@ -43,7 +43,6 @@ const AnimeDetailCharacters = () => {
                   <CharacterCard
                     character={character.character}
                     isLoading={isLoadingCharacters}
-                    fullWidth
                   />
                 </motion.div>
               ))
@@ -52,7 +51,6 @@ const AnimeDetailCharacters = () => {
                   key={`character-skeleton-${index}`}
                   character={{} as ICharacter}
                   isLoading
-                  fullWidth
                 />
               ))}
         </div>

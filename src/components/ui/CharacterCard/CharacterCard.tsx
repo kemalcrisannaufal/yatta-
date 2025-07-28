@@ -1,26 +1,21 @@
 import { ICharacter } from "@/types/anime";
-import cn from "@/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
 
 interface Proptypes {
   character: ICharacter;
-  fullWidth?: boolean;
   isLoading: boolean;
 }
 
 const CharacterCard = (props: Proptypes) => {
-  const { character, fullWidth = false, isLoading } = props;
+  const { character, isLoading } = props;
   return (
     <>
       {!isLoading ? (
         <Link
           href={`/characters/${character?.mal_id}`}
           key={`character-${character?.mal_id}`}
-          className={cn(
-            "relative rounded w-[165px] md:w-[175px] h-[235px] overflow-hidden",
-            fullWidth && "w-full"
-          )}
+          className={"relative rounded  w-full  h-[235px] overflow-hidden"}
         >
           <Image
             src={character?.images?.jpg?.image_url}
@@ -39,7 +34,7 @@ const CharacterCard = (props: Proptypes) => {
       ) : (
         <div
           aria-label="skeleton-character-card"
-          className="rounded w-[165px] md:w-[175px] h-[230px] skeleton"
+          className="rounded w-full h-[230px] skeleton"
         />
       )}
     </>

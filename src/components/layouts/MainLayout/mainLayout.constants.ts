@@ -8,7 +8,7 @@ const NAV_ITEMS = [
     href: "/anime",
   },
   {
-    name: "Character",
+    name: "Characters",
     href: "/characters",
   },
   {

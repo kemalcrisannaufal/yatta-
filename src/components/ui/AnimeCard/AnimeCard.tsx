@@ -1,25 +1,20 @@
 import { IAnime } from "@/types/anime";
-import cn from "@/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
 
 interface Proptypes {
   anime: IAnime;
-  fullWidth?: boolean;
   isLoading: boolean;
 }
 
 const AnimeCard = (props: Proptypes) => {
-  const { anime, fullWidth = false, isLoading } = props;
+  const { anime, isLoading } = props;
   return (
     <>
       {!isLoading ? (
         <Link
           href={`/anime/${anime?.mal_id}`}
-          className={cn(
-            "relative rounded w-[165px] md:w-[175px] h-[235px] overflow-hidden",
-            fullWidth && "w-full"
-          )}
+          className={"block relative rounded w-full  h-[235px] overflow-hidden"}
         >
           <Image
             src={anime?.images?.jpg?.image_url}
@@ -38,7 +33,7 @@ const AnimeCard = (props: Proptypes) => {
       ) : (
         <div
           aria-label="skeleton-anime-card"
-          className={cn("rounded w-[165px] md:w-[175px] h-[235px] skeleton")}
+          className={"rounded w-full  h-[235px] skeleton"}
         />
       )}
     </>
