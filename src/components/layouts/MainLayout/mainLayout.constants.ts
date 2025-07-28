@@ -11,10 +11,10 @@ const NAV_ITEMS = [
     name: "Characters",
     href: "/characters",
   },
-  {
-    name: "Schedule",
-    href: "/schedules",
-  },
+  // {
+  //   name: "Schedule",
+  //   href: "/schedules",
+  // },
 ];
 
 export { NAV_ITEMS };
