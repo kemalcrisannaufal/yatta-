@@ -7,24 +7,20 @@ import { useEffect, useState } from "react";
 import HamburgerMenu from "@/components/ui/HamburgerMenu";
 import { FaChevronRight } from "react-icons/fa";
 import { AnimatePresence, motion } from "framer-motion";
-import useDebounce from "@/hooks/useDebounce";
 
 const MainLayoutNavbar = () => {
   const router = useRouter();
-  const debounce = useDebounce();
   const [scrolled, setScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
-      debounce(() => {
-        setScrolled(window.scrollY > 75);
-      }, 5000);
+      setScrolled(window.scrollY > 75);
     };
 
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [debounce]);
+  }, []);
 
   useEffect(() => {
     const handleResize = () => {
